@@ -3,7 +3,7 @@ const routeCreateNewAdmin = express.Router()
 const createAdmin = require("../controllers/createAdmin")
 const checkIsAdmin = require("../controllers/checkIsAdmin")
 
-routeCreateNewAdmin.post("/admin/createNewAdmin", checkIsAdmin, (req, res)=>{
+routeCreateNewAdmin.post("/auth/createNewAdmin", checkIsAdmin, (req, res)=>{
 
     createAdmin(req, res, verification = "existence")
 
