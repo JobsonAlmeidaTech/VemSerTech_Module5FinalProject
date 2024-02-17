@@ -1,5 +1,5 @@
 
-const User = require("../../models/User")
+const User = require("../models/User")
 const bcrypt = require("bcrypt")
 
 async function createAdmin(req, res, verification){
@@ -52,7 +52,6 @@ async function createAdmin(req, res, verification){
             status: false,
             msg: "Incorrect validation type"})
     }
-
 
     //creating password's hash
     const salt = await bcrypt.genSalt(10)
