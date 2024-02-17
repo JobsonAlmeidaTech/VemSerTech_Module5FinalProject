@@ -1,15 +1,17 @@
 const express = require("express")
 const mongooseInit = require("./configurations/MongooseConfigurations")
 require("dotenv").config()
-const routeAdministrator = require("./routes/Administrator")
+const routeCreateSingleAdmin = require("./routes/createSingleAmin")
+const routeCreateNewAdmin = require("./routes/createNewAdmin")
 const routeLogin = require("./routes/login")
 
 const app = express()
 mongooseInit()
 
 app.use(express.json()) 
-app.use(routeAdministrator)
+app.use(routeCreateSingleAdmin)
 app.use(routeLogin)
+app.use(routeCreateNewAdmin)
 
 //Welcome public route 
 app.get("/", (abc, res)=>{
