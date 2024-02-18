@@ -7,8 +7,6 @@ routeCreateSingleAdmin.post("/auth/createSingleAdmin", async (req, res)=>{
 
     const singleAdmin = await checkSingleAdmin()
 
-    console.log(singleAdmin)
-
     if(singleAdmin){
         createUser(req, res, "admin")
     }

@@ -21,7 +21,7 @@ function checkIsAdmin(req, res, next){
             })
         }
         else{
-            if(decoded.roles.includes("admin")){
+            if(decoded.role === "admin"){
                 next()
             }
             else{

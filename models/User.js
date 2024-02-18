@@ -17,11 +17,11 @@ const User = mongoose.model("User", {
         type: String,
         required: true
     },
-    roles: [{
+    role: {
         type: String,
         required: true,
         enum:  ["admin", "teacher", "student"]     
-    }]
+    }
 })
 
 module.exports = User

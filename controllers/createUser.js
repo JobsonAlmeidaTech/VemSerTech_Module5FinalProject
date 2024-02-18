@@ -30,12 +30,12 @@ async function createUser(req, res, role){
 
 
     //checking if user exists
-    const userExists = await User.findOne({email: email})
+    const userRecovered = await User.findOne({email: email})
 
-    if(userExists){
+    if(userRecovered && userRecovered.role === role){
         return res.status(422).json({
             status: false,
-            msg: "User already existing in the system! Use another email!"})
+            msg: `${role.charAt(0).toUpperCase()}${role.substring(1)} already existing in the system! Use another email!`})
     }
 
     //creating password's hash
@@ -61,14 +61,13 @@ async function createUser(req, res, role){
         name,
         email,
         password : passwordHash,
-        roles: [role]
+        role: role
     })
 
     try{
 
         await user.save()
 
-        
         res.status(201).json({
             status: true,
             msg: `${role.charAt(0).toUpperCase()}${role.substring(1)} successfully created!`,

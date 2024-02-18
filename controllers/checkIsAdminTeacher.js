@@ -21,10 +21,10 @@ function checkIsAdminTeacher(req, res, next){
             })
         }
         else{
-            if(decoded.roles.includes("admin")){
+            if(decoded.role === "admin"){
                 next()
             }
-            else if(decoded.roles.includes("teacher")){
+            else if(decoded.role ==="teacher"){
                 next()
             }
             else{

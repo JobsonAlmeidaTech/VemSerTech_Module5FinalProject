@@ -1,11 +1,11 @@
 const express = require("express")
 const routeDeleteAdmin = express.Router()
-const deleteAdmin = require("../controllers/deleteAdmin")
+const deleteUser = require("../controllers/deleteUser")
 const checkIsAdmin = require("../controllers/checkIsAdmin")
 
 routeDeleteAdmin.post("/auth/deleteAdmin", checkIsAdmin, (req, res)=>{
 
-    deleteAdmin(req, res)
+    deleteUser(req, res, "admin")
 
 })
 
