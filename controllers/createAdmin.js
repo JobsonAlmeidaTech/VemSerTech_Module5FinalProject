@@ -76,7 +76,7 @@ async function createAdmin(req, res, verification){
         name,
         email,
         password : passwordHash,
-        roles: ["student", "teacher", "admin"]
+        roles: ["admin"]
     })
 
     try{
