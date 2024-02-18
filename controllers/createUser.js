@@ -2,7 +2,7 @@
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
 
-async function createSingleAdmin(req, res){
+async function createUser(req, res, role){
 
     const {name, email, password, confirmPassword} = req.body
 
@@ -28,13 +28,15 @@ async function createSingleAdmin(req, res){
             msg: "Passwords don't match!"})
     }
 
-    //checking if there is at least one admin registered into the system
-    const adminExists = await User.findOne({roles: "admin"}) 
-    if(adminExists){
+
+    //checking if user exists
+    const userExists = await User.findOne({email: email})
+
+    if(userExists){
         return res.status(422).json({
             status: false,
-            msg: "There is already at least one administrator in the system! Ask him for your registration."})
-    }        
+            msg: "User already existing in the system! Use another email!"})
+    }
 
     //creating password's hash
     const salt = await bcrypt.genSalt(10)
@@ -50,25 +52,26 @@ async function createSingleAdmin(req, res){
         console.log(error)
         return res.status(500).json({
             status: false,
-            msg: "A server error occurred while generating the user ID. Try later!"})
+            msg: `A server error occurred while generating the ${role} ID. Try later!`})
     })
 
-    //creating a user
+    //creating the user
     const user = new User({
         id: idUser,
         name,
         email,
         password : passwordHash,
-        roles: ["admin"]
+        roles: [role]
     })
 
     try{
 
         await user.save()
 
+        
         res.status(201).json({
             status: true,
-            msg: "Admin successfully created!",
+            msg: `${role.charAt(0).toUpperCase()}${role.substring(1)} successfully created!`,
             id: idUser
         })
     
@@ -77,9 +80,9 @@ async function createSingleAdmin(req, res){
         console.log(error)
         return res.status(500).json({
             status: false,
-            msg: "A server error occurred while generating the user ID. Try later!"})
+            msg: `A server error occurred while generating the ${role} ID. Try later!`})
     }
 
 }
 
-module.exports = createAdmin
+module.exports = createUser

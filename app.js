@@ -1,11 +1,13 @@
 const express = require("express")
 const mongooseInit = require("./configurations/MongooseConfigurations")
 require("dotenv").config()
-const routeCreateSingleAdmin = require("./routes/createSingleAmin")
+
+const routeCreateSingleAdmin = require("./routes/createSingleAdmin")
 const routeCreateAdmin = require("./routes/createAdmin")
 const routeLogin = require("./routes/login")
-const routeDeleteAdmin = require("./routes/deleteAdmin")
 const routeCreateTeacher = require("./routes/createTeacher")
+const routeCreateStudent = require("./routes/createStudent")
+
 const app = express()
 mongooseInit()
 
@@ -13,8 +15,9 @@ app.use(express.json())
 app.use(routeCreateSingleAdmin)
 app.use(routeLogin)
 app.use(routeCreateAdmin)
-app.use(routeDeleteAdmin)
+// app.use(routeDeleteAdmin)
 app.use(routeCreateTeacher)
+app.use(routeCreateStudent)
 
 //Welcome public route 
 app.get("/", (abc, res)=>{

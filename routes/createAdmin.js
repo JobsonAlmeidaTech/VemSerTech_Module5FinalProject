@@ -1,11 +1,11 @@
 const express = require("express")
 const routeCreateAdmin = express.Router()
-const createAdmin = require("../controllers/createAdmin")
 const checkIsAdmin = require("../controllers/checkIsAdmin")
+const createUser = require("../controllers/createUser")
 
 routeCreateAdmin.post("/auth/createAdmin", checkIsAdmin, (req, res)=>{
 
-    createAdmin(req, res, verification = "existence")
+    createUser(req, res, "admin")
 
 })
 
