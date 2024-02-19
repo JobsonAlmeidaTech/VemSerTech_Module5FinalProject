@@ -11,6 +11,8 @@ const routeDeleteAdmin = require("./routes/deleteAdmin")
 const routeDeleteTeacher = require("./routes/deleteTeacher")
 const routeDeleteStudent = require("./routes/deleteStudent")
 const routeListUsers = require("./routes/listUsers")
+const routeCreateClassroom = require("./routes/createClassRoom")
+const routeGenerateUserIdTest = require("./routes/generateUserIdFile")
 
 const app = express()
 mongooseInit()
@@ -25,6 +27,9 @@ app.use(routeDeleteAdmin)
 app.use(routeDeleteTeacher)
 app.use(routeDeleteStudent)
 app.use(routeListUsers)
+app.use(routeCreateClassroom)
+
+app.use(routeGenerateUserIdTest)
 
 //Welcome to public route 
 app.get("/", (abc, res)=>{

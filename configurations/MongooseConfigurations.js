@@ -4,7 +4,7 @@ function mongooseInit(){
     const mongoose = require("mongoose")
 
     mongoose.Promise = global.Promise
-    const dataBaseName = "123DacingSchool"
+    const dataBaseName = "DancingSchool"
     mongoose.connect(`mongodb://localhost:27017/${dataBaseName}`)
     .then(()=>{
         console.log(`Successfully connected to ${dataBaseName} database`)

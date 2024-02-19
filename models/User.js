@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const User = mongoose.model("User", {
-    id: {
+    userId: {
         type: Number,
         required: true
     },

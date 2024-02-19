@@ -1,4 +1,3 @@
-
 const User = require("../models/User")
 const bcrypt = require("bcrypt")
 
@@ -43,10 +42,10 @@ async function createUser(req, res, role){
     const passwordHash = await bcrypt.hash(password,salt)
 
     //creating a user ID
-    let idUser 
+    let userId 
     await User.find().count()
     .then((numberOfUsers)=>{
-        idUser =  numberOfUsers + 1
+        userId =  numberOfUsers + 1
     })
     .catch((error)=>{
         console.log(error)
@@ -57,7 +56,7 @@ async function createUser(req, res, role){
 
     //creating the user
     const user = new User({
-        id: idUser,
+        userId: userId,
         name,
         email,
         password : passwordHash,
@@ -71,7 +70,7 @@ async function createUser(req, res, role){
         res.status(201).json({
             status: true,
             msg: `${role.charAt(0).toUpperCase()}${role.substring(1)} successfully created!`,
-            id: idUser
+            id: userId
         })
     
     }
