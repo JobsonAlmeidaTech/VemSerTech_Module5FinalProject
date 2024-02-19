@@ -45,7 +45,7 @@ async function login(req, res){
             role: user.role
         }, secret,
         {
-            expiresIn: 600
+            expiresIn: 60000
         })
     
         res.status(200).json({

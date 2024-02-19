@@ -19,7 +19,7 @@ async function listUsers(res, role){
         const usersList = []   
     
         for(const user of foundUsers){        
-            usersList.push({name: user.name, email: user.email, role: user.role, userId: user.userId})
+            usersList.push({name: user.name, email: user.email, role: user.role, userId: user._id})
         }
         
         res.status(200).json({

@@ -35,7 +35,7 @@ app.use(routeAddStudentToClass)
 
 app.use(routeGenerateUserIdTest)
 
-//Welcome to public route  
+//Welcome public route 
 app.get("/", (abc, res)=>{
     res.status(200).json({        
         msg: "Welcome to 123 Studio. Your best dancing school."

@@ -29,7 +29,7 @@ async function createUser(req, res, role){
 
 
     //checking if user exists
-    const userRecovered = await User.findOne({email: email})
+    const userRecovered = await User.findOne({email: email, role: role})
 
     if(userRecovered && userRecovered.role === role){
         return res.status(422).json({
@@ -41,22 +41,8 @@ async function createUser(req, res, role){
     const salt = await bcrypt.genSalt(10)
     const passwordHash = await bcrypt.hash(password,salt)
 
-    //creating a user ID
-    let userId 
-    await User.find().count()
-    .then((numberOfUsers)=>{
-        userId =  numberOfUsers + 1
-    })
-    .catch((error)=>{
-        console.log(error)
-        return res.status(500).json({
-            status: false,
-            msg: `A server error occurred while generating the ${role} ID. Try later!`})
-    })
-
     //creating the user
     const user = new User({
-        userId: userId,
         name,
         email,
         password : passwordHash,
@@ -70,7 +56,6 @@ async function createUser(req, res, role){
         res.status(201).json({
             status: true,
             msg: `${role.charAt(0).toUpperCase()}${role.substring(1)} successfully created!`,
-            id: userId
         })
     
     }
@@ -78,7 +63,7 @@ async function createUser(req, res, role){
         console.log(error)
         return res.status(500).json({
             status: false,
-            msg: `A server error occurred while generating the ${role} ID. Try later!`})
+            msg: `A server error occurred while creating the ${role}. Try later!`})
     }
 
 }

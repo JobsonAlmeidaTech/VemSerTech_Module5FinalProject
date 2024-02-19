@@ -17,7 +17,7 @@ async function addStudentToClass(req, res){
     const classroomRecovered = await Classroom.findOne({_id: req.body.classroomId})
     
     if(!classroomRecovered){ 
-        return res.status(422).json({
+        return res.status(422).json({ 
             status: false,
             msg: `The classroomId informed doesn't own to any classroom in the school! Use another ID!`})
     }

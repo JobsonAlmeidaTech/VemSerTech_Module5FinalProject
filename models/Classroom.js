@@ -22,11 +22,11 @@ const Classroom = mongoose.model("Classroom", {
         required: true
     },       
     teacher1_ID: {
-        type: Number,
+        type: String,
         required: true
     },
     teacher2_ID:{
-        type: Number,
+        type: String,
         required: false
     },
     studentIds: {
