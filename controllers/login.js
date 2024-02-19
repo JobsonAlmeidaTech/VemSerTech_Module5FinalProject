@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken")
 
 async function login(req, res){ 
 
-    const {email, password} = req.body
+    const {email, password, role} = req.body
 
     //validations
     if(!email){
@@ -19,7 +19,7 @@ async function login(req, res){
     }
 
     //checking if user exists
-    const user = await User.findOne({email: email})
+    const user = await User.findOne({email: email, role: role})
     if(!user){
     return res.status(404).json({
         status:false,
@@ -39,9 +39,8 @@ async function login(req, res){
         const secret = process.env.SECRET
 
         const token = jwt.sign({
-            id: user.id,
+            id: user._id,
             name: user.name,
-            email: user.email,
             role: user.role
         }, secret,
         {

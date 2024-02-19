@@ -4,7 +4,7 @@ const Classroom = require("../models/Classroom")
 
 async function createClassroomFunction(req, res){
 
-    const {dacingStyle, level, dayOfTheWeek, startTime, endtime, teacher1_ID, teacher2_ID } = req.body
+    const {dacingStyle, level, dayOfTheWeek, startTime, endtime, roomNumber, teacher1_ID, teacher2_ID } = req.body
 
     //validations
     if(!dacingStyle){
@@ -34,43 +34,46 @@ async function createClassroomFunction(req, res){
             status: false,
             msg: "endtime is required!"})
     } 
- 
-    if(!teacher1_ID){
+
+    if(!roomNumber){
         return res.status(422).json({
             status: false,
-            msg: "Teacher1_ID is required!"})
+            msg: "roomNumber is required!"})
     } 
-
-    if(teacher1_ID.length != 24){
-        return res.status(422).json({
-            status: false,
-            msg: "The teacher1_ID must be 24 characters long"})
+ 
+    if(teacher1_ID){
+        if(teacher1_ID.length != 24){
+            return res.status(422).json({
+                status: false,
+                msg: "If teacher teacher1_ID is not empty it must be 24 characters long"})
+        }
     }
-
     if(teacher2_ID){
         if(teacher2_ID.length != 24){
             return res.status(422).json({
                 status: false,
-                msg: "If teacher teacher2_ID is not emprty it must be 24 characters long"})
+                msg: "If teacher teacher2_ID is not empty it must be 24 characters long"})
         }
     }
     
-    //checking if teachers exists in the system
-    const teacherRecovered = await User.findOne({_id: teacher1_ID, role: "teacher"})
-    if(!teacherRecovered){
-        return res.status(422).json({
-            status: false,
-            msg: `The teacher1_ID provided: ${teacher1_ID} does not belong to any teacher in the system! Use another ID!`})
+    //checking if typed teachers exists in the system
+    if(teacher1_ID){
+        const recoveredTeacher1 = await User.findOne({_id: teacher1_ID, role: "teacher"})
+        if(!recoveredTeacher1){
+            return res.status(422).json({
+                status: false,
+                msg: `The teacher1_ID provided: ${teacher1_ID} does not belong to any teacher in the system! Use another ID!`})
+        }
     }
-
     if(teacher2_ID){
-        const teacherRecovered2 = await User.findOne({userId: teacher2_ID})
-        if(!teacherRecovered2 || teacherRecovered2.role !== "teacher"){
+        const recoveredTeacher2 = await User.findOne({_id: teacher2_ID, role: "teacher"})
+        if(!recoveredTeacher2){
             return res.status(422).json({
                 status: false,
                 msg: `The teacher2_ID provided: ${teacher2_ID} does not belong to any teacher in the system! Use another ID!`})
         }
     }
+   
      
     //creating the classroom
     const classroom = new Classroom({
@@ -79,6 +82,7 @@ async function createClassroomFunction(req, res){
         dayOfTheWeek,
         startTime,
         endtime,
+        roomNumber,
         teacher1_ID,
         teacher2_ID
     })

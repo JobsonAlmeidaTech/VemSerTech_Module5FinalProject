@@ -20,11 +20,15 @@ const Classroom = mongoose.model("Classroom", {
     endtime:{
         type: String,
         required: true
-    },       
-    teacher1_ID: {
+    },  
+    roomNumber:{
         type: String,
         required: true
-    },
+    },     
+    teacher1_ID: {
+        type: String,
+        required: false
+    },   
     teacher2_ID:{
         type: String,
         required: false
