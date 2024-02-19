@@ -13,6 +13,8 @@ const routeDeleteStudent = require("./routes/deleteStudent")
 const routeListUsers = require("./routes/listUsers")
 const routeCreateClassroom = require("./routes/createClassRoom")
 const routeGenerateUserIdTest = require("./routes/generateUserIdFile")
+const routeAddStudentToClass = require("./routes/addStudentToClass")
+const routeListClassrooms = require("./routes/listClassrooms")
 
 const app = express()
 mongooseInit()
@@ -27,11 +29,13 @@ app.use(routeDeleteAdmin)
 app.use(routeDeleteTeacher)
 app.use(routeDeleteStudent)
 app.use(routeListUsers)
+app.use(routeListClassrooms)
 app.use(routeCreateClassroom)
+app.use(routeAddStudentToClass)
 
 app.use(routeGenerateUserIdTest)
 
-//Welcome to public route 
+//Welcome to public route  
 app.get("/", (abc, res)=>{
     res.status(200).json({        
         msg: "Welcome to 123 Studio. Your best dancing school."

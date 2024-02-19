@@ -31,7 +31,7 @@ async function listUsers(res, role){
     else{
         res.status(404).json({
             status: "false",
-            msg: `The user list must be admin, student or teacher`
+            msg: `The user to be listed must be admin, student or teacher`
         })
     }
    

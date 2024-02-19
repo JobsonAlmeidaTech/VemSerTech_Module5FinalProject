@@ -24,9 +24,6 @@ async function deleteUser(req, res, role){
         })
     }
 
-
-
-   
     //deleting the user
     try{
 

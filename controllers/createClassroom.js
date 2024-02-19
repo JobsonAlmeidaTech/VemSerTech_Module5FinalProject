@@ -4,8 +4,6 @@ const Classroom = require("../models/Classroom")
 
 async function createClassroomFunction(req, res){
 
-    console.log("create Classroom")
-
     const {dacingStyle, level, dayOfTheWeek, startTime, endtime, teacher1_ID, teacher2_ID } = req.body
 
     //validations

@@ -29,10 +29,10 @@ const Classroom = mongoose.model("Classroom", {
         type: Number,
         required: false
     },
-    studentsIds: {
+    studentIds: {
         type: Array,
-        require: false
-    }  
+        required: false
+    }
 })
 
 module.exports = Classroom
