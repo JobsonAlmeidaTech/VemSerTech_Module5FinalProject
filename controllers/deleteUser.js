@@ -42,7 +42,6 @@ async function deleteUser(req, res, role){
         deleteTeacher(req, res)
     } 
 
-    console.log("passou delete user")
 }
 
 async function deleteAdmin(req, res){

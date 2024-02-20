@@ -3,7 +3,7 @@ const routeDeleteStudent = express.Router()
 const deleteUser = require("../controllers/deleteUser")
 const checkIsAdminTeacher = require("../controllers/checkIsAdminTeacher")
 
-routeDeleteStudent.post("/auth/deleteStudent", checkIsAdminTeacher, (req, res)=>{
+routeDeleteStudent.delete("/auth/deleteStudent", checkIsAdminTeacher, (req, res)=>{
 
     deleteUser(req, res, "student")
 
