@@ -11,10 +11,10 @@ const routeDeleteAdmin = require("./routes/deleteAdmin")
 const routeDeleteTeacher = require("./routes/deleteTeacher")
 const routeDeleteStudent = require("./routes/deleteStudent")
 const routeListUsers = require("./routes/listUsers")
-const routeCreateClassroom = require("./routes/createClassRoom")
-const routeGenerateUserIdTest = require("./routes/generateUserIdFile")
+const routeCreateClassroom = require("./routes/createClassroom")
 const routeAddStudentToClass = require("./routes/addStudentToClass")
 const routeListClassrooms = require("./routes/listClassrooms")
+const routeUpdateClassroom = require("./routes/updateClassroom")
 
 const app = express()
 mongooseInit()
@@ -32,8 +32,7 @@ app.use(routeListUsers)
 app.use(routeListClassrooms)
 app.use(routeCreateClassroom)
 app.use(routeAddStudentToClass)
-
-app.use(routeGenerateUserIdTest)
+app.use(routeUpdateClassroom)
 
 //Welcome public route 
 app.get("/", (abc, res)=>{
