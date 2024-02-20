@@ -26,7 +26,7 @@ async function updateClassroom (req, res){
     if(!recoveredClassroom){ 
         return res.status(422).json({
             status: false,
-            msg: `The recoveredClassroom provided does not belong to any classroom at the school! Use another ID!`})
+            msg: `The classroomId provided does not belong to any classroom at the school! Use another ID!`})
     }
 
     //validating teachers ID length
