@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Classroom = mongoose.model("Classroom", {
+const Course = mongoose.model("Course", {
     dacingStyle: {
         type: String,
         required: true
@@ -17,7 +17,7 @@ const Classroom = mongoose.model("Classroom", {
         type: String,
         required: true
     },
-    endtime:{
+    endTime:{
         type: String,
         required: true
     },  
@@ -39,4 +39,4 @@ const Classroom = mongoose.model("Classroom", {
     }
 })
 
-module.exports = Classroom
+module.exports = Course

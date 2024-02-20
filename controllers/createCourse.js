@@ -1,8 +1,7 @@
 const User = require("../models/User")
-const bcrypt = require("bcrypt")
-const Classroom = require("../models/Classroom")
+const Course = require("../models/Course")
 
-async function createClassroomFunction(req, res){
+async function createCourse(req, res){
 
     const {dacingStyle, level, dayOfTheWeek, startTime, endtime, roomNumber, teacher1_ID, teacher2_ID } = req.body
 
@@ -76,7 +75,7 @@ async function createClassroomFunction(req, res){
    
      
     //creating the classroom
-    const classroom = new Classroom({
+    const course = new Course({
         dacingStyle,
         level,
         dayOfTheWeek,
@@ -89,11 +88,11 @@ async function createClassroomFunction(req, res){
 
     try{
 
-        await classroom.save()
+        await course.save()
 
         res.status(201).json({
             status: true,
-            msg: `Classroom successfully created!`,
+            msg: `Course successfully created!`,
         })
     
     }
@@ -101,9 +100,9 @@ async function createClassroomFunction(req, res){
         console.log(error)
         return res.status(500).json({
             status: false,
-            msg: `A server error occurred while creating the classroom. Try later!`})
+            msg: `A server error occurred while creating the course. Try later!`})
     }
 
 }
 
-module.exports = createClassroomFunction
+module.exports = createCourse

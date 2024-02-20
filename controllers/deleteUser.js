@@ -1,4 +1,4 @@
-const Classroom = require("../models/Classroom")
+const Classroom = require("../models/Course")
 const User = require("../models/User")
 
 async function deleteUser(req, res, role){
