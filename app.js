@@ -42,8 +42,7 @@ app.get("/", (abc, res)=>{
 
 })
 
-PORT = 3000
-app.listen(PORT, (error)=>{
+app.listen(process.env.PORT, (error)=>{
     if(error) console.log(`Occurred an error in server setup`)
-    else console.log(`Server listening on PORT ${PORT} `)
+    else console.log(`Server listening on PORT ${process.env.PORT} `)
 })
