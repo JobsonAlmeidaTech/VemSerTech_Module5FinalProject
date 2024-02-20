@@ -3,7 +3,7 @@ const Course = require("../models/Course")
 
 async function createCourse(req, res){
 
-    const {dacingStyle, level, dayOfTheWeek, startTime, endtime, roomNumber, teacher1_ID, teacher2_ID } = req.body
+    const {dacingStyle, level, dayOfTheWeek, startTime, endTime, roomNumber, teacher1_ID, teacher2_ID } = req.body
 
     //validations
     if(!dacingStyle){
@@ -28,10 +28,10 @@ async function createCourse(req, res){
             msg: "startTime is required!"})
     } 
 
-    if(!endtime){
+    if(!endTime){
         return res.status(422).json({
             status: false,
-            msg: "endtime is required!"})
+            msg: "endTime is required!"})
     } 
 
     if(!roomNumber){
@@ -80,7 +80,7 @@ async function createCourse(req, res){
         level,
         dayOfTheWeek,
         startTime,
-        endtime,
+        endTime,
         roomNumber,
         teacher1_ID,
         teacher2_ID
