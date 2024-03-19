@@ -2,7 +2,7 @@
 
 <p align="center">
 <img src="images/VemSerTech.jpg"  alt="VemSerTech" height="200px align="left" />
-  <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
+  <span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>
 <img src="images/danceSchool.jpg"  alt="Dance School" height="200px align="right"/>
 </p>
 
