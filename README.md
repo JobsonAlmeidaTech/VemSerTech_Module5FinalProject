@@ -26,7 +26,7 @@ The course lasted about 6 months with synchronous classes every Monday, Wednesda
 
 ## Purpose 
 
-At the end of the fifth module, each student was challenged to build a RESTful API. So, I decided to build an API to be used at the dance school called 123 Studio. This API was built using the nodejs framework and several concepts were applied such as middleware, authenticated routes through jwt token and database administration through mongoose such as ODM (Object Document Mapping) to manage the MongoDB database.
+At the end of the fifth module, each student was challenged to build a RESTful API. So, I decided to build an API to be used at the dance school called 123 Studio. This API was built using the nodejs framework and several concepts were applied such as middleware, authenticated routes through jwt token and database administration through mongoose as ODM (Object Document Mapping) to manage the MongoDB database.
 
 More about the specified requirements for this project can be read in the document below written by the module professor.
 
